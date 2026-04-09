@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chloe Vassell — Security & Networks</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=DM+Mono:wght@300;400;500&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --sand:#fdf6e3;--sand2:#f5e9c8;--sand3:#ecdcb0;
+    --ocean:#2a9db5;--ocean2:#1b7a93;
+    --seafoam:#7ecfc0;--seafoam2:#4db8a7;
+    --coral:#f4845f;--coral2:#e86840;
+    --pink:#f9b8c4;--pink2:#f28fa0;
+    --sun:#ffd166;--sun2:#f7b731;
+    --palm:#3d6b35;--palm2:#2d5228;
+    --text:#2c2825;--text2:#5a4e44;--text3:#9a8878;
+    --border:rgba(44,40,37,0.1);--border2:rgba(44,40,37,0.18);
+    --serif:'Fraunces',serif;--mono:'DM Mono',monospace;--sans:'Nunito',sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--sand);color:var(--text);overflow-x:hidden;line-height:1.6}
+  ::-webkit-scrollbar{width:4px}
+  ::-webkit-scrollbar-track{background:var(--sand2)}
+  ::-webkit-scrollbar-thumb{background:var(--seafoam);border-radius:4px}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(253,246,227,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .logo{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ocean2);font-weight:700;display:flex;align-items:center;gap:8px}
+  .nav-links{display:flex;gap:2rem}
+  .nav-links a{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text2);text-decoration:none;transition:color 0.2s}
+  .nav-links a:hover{color:var(--ocean)}
+  .nav-badge{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;padding:6px 14px;border-radius:999px;background:var(--seafoam);color:#fff;font-weight:500}
+
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 2.5rem 0;overflow:hidden}
+  .hero-sky{position:absolute;inset:0;background:linear-gradient(180deg,#b8eaf7 0%,#d6f3fb 28%,#f5f9e8 55%,#fdf6e3 100%)}
+  .hero-sun{position:absolute;top:8%;right:12%;width:110px;height:110px;background:radial-gradient(circle,#ffe57a 30%,#ffd166 60%,transparent 80%);border-radius:50%;box-shadow:0 0 60px 20px rgba(255,209,102,0.35);animation:float 5s ease-in-out infinite}
+  .cloud{position:absolute;border-radius:999px;background:rgba(255,255,255,0.85)}
+  .cloud-1{top:12%;left:8%;width:120px;height:36px}
+  .cloud-1::before{content:'';position:absolute;width:60px;height:48px;background:inherit;border-radius:50%;top:-20px;left:20px}
+  .cloud-1::after{content:'';position:absolute;width:40px;height:36px;background:inherit;border-radius:50%;top:-12px;left:55px}
+  .cloud-2{top:18%;left:38%;width:90px;height:28px}
+  .cloud-2::before{content:'';position:absolute;width:44px;height:40px;background:inherit;border-radius:50%;top:-16px;left:14px}
+  .cloud-2::after{content:'';position:absolute;width:32px;height:28px;background:inherit;border-radius:50%;top:-10px;left:44px}
+  .cloud-3{top:8%;right:28%;width:70px;height:22px}
+  .cloud-3::before{content:'';position:absolute;width:36px;height:32px;background:inherit;border-radius:50%;top:-14px;left:10px}
+  .birds{position:absolute;top:22%;left:26%}
+  .hero-scene{position:absolute;bottom:0;left:0;right:0;width:100%;pointer-events:none}
+  .hero-content{position:relative;z-index:5;max-width:600px}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;color:var(--ocean);margin-bottom:1rem;display:flex;align-items:center;gap:10px}
+  .hero-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--ocean);border-radius:1px}
+  h1{font-family:var(--serif);font-size:clamp(3rem,6vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em;color:var(--text);margin-bottom:0.2em}
+  h1 em{font-weight:300;font-style:italic;color:var(--ocean2)}
+  .hero-tagline{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1rem,2.2vw,1.4rem);color:var(--text2);margin-bottom:1.25rem}
+  .hero-bio{font-size:15px;color:var(--text2);line-height:1.8;max-width:440px;margin-bottom:2rem}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;padding:11px 24px;border-radius:999px;cursor:pointer;text-decoration:none;transition:all 0.22s;display:inline-block;border:none}
+  .btn-ocean{background:var(--ocean);color:#fff}
+  .btn-ocean:hover{background:var(--ocean2);transform:translateY(-2px)}
+  .btn-outline{background:transparent;color:var(--ocean);border:1.5px solid var(--ocean)}
+  .btn-outline:hover{background:var(--ocean);color:#fff}
+  .hero-stats{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap}
+  .stat-bubble{background:rgba(255,255,255,0.7);border:1px solid var(--border);border-radius:16px;padding:0.75rem 1.25rem;backdrop-filter:blur(6px)}
+  .stat-num{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--coral)}
+  .stat-label{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--text3);margin-top:1px}
+
+  .wave-sep{width:100%;display:block;overflow:hidden;line-height:0}
+  .section-sand{background:var(--sand)}
+  .section-sand2{background:var(--sand2)}
+  .section-ocean{background:linear-gradient(135deg,#e8f8fb 0%,#d0f0f8 100%)}
+
+  section{padding:5rem 2.5rem}
+  .section-label{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:var(--text3);margin-bottom:2.5rem;display:flex;align-items:center;gap:12px}
+  .section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+  .section-label .icon{font-size:14px}
+
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .about-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:1.75rem;box-shadow:0 2px 12px rgba(42,157,181,0.06)}
+  .about-card h3{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ocean);margin-bottom:0.9rem;display:flex;align-items:center;gap:6px}
+  .about-card p{font-size:14px;color:var(--text2);line-height:1.85}
+  .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--seafoam);margin-right:6px;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+  .lang-stack{display:flex;flex-direction:column;gap:12px}
+  .lang-item{display:flex;align-items:center;gap:10px}
+  .lang-name{font-family:var(--mono);font-size:12px;color:var(--text);min-width:50px}
+  .lang-bar-bg{flex:1;height:6px;background:var(--sand2);border-radius:999px;overflow:hidden}
+  .lang-bar{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--seafoam),var(--ocean))}
+  .lang-level{font-family:var(--mono);font-size:10px;color:var(--text3);min-width:52px;text-align:right}
+
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .project-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:1.75rem;transition:transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden}
+  .project-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--seafoam),var(--ocean),var(--coral));transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;border-radius:0 0 20px 20px}
+  .project-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(42,157,181,0.12)}
+  .project-card:hover::after{transform:scaleX(1)}
+  .project-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+  .project-num{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em}
+  .project-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .ptag{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:999px;background:var(--sand2);color:var(--text2);letter-spacing:0.05em}
+  .project-card h3{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+  .project-card p{font-size:13px;color:var(--text2);line-height:1.75}
+  .project-footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .project-lang{font-family:var(--mono);font-size:11px;color:var(--seafoam2)}
+  .project-link{font-family:var(--mono);font-size:10px;color:var(--text3);text-decoration:none;letter-spacing:0.08em;transition:color 0.2s}
+  .project-link:hover{color:var(--ocean)}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+  .skill-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+  .skill-card h4{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--coral);margin-bottom:0.85rem;display:flex;align-items:center;gap:6px}
+  .skill-card ul{list-style:none}
+  .skill-card li{font-size:13px;color:var(--text2);padding:3px 0;display:flex;align-items:center;gap:8px}
+  .skill-card li::before{content:'~';font-family:var(--mono);color:var(--seafoam);font-size:12px}
+
+  .contact-wrap{max-width:580px;background:#fff;border:1px solid var(--border);border-radius:24px;padding:2.5rem;box-shadow:0 4px 24px rgba(42,157,181,0.08)}
+  .contact-wrap h2{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
+  .contact-wrap h2 em{color:var(--ocean);font-style:italic;font-weight:300}
+  .contact-wrap p{font-size:14px;color:var(--text2);margin-bottom:1.75rem;line-height:1.8}
+  .contact-links{display:flex;flex-direction:column;gap:10px}
+  .contact-link{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:13px;color:var(--text2);text-decoration:none;padding:13px 18px;background:var(--sand);border:1px solid var(--border);border-radius:12px;transition:all 0.2s}
+  .contact-link:hover{background:var(--ocean);color:#fff;border-color:var(--ocean)}
+  .contact-link:hover .c-icon{color:#fff}
+  .c-icon{width:15px;height:15px;flex-shrink:0;color:var(--ocean);transition:color 0.2s}
+
+  .footer-wrap{position:relative;overflow:hidden;background:var(--ocean2);padding:0}
+  .footer-scene{width:100%;display:block}
+  .footer-inner{padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center}
+  .footer-inner p{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.06em}
+  .footer-tag{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(255,255,255,0.8)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .hero-eyebrow{animation:fadeUp .6s ease both .1s}
+  h1{animation:fadeUp .6s ease both .2s}
+  .hero-tagline{animation:fadeUp .6s ease both .3s}
+  .hero-bio{animation:fadeUp .6s ease both .4s}
+  .hero-btns{animation:fadeUp .6s ease both .5s}
+  .hero-stats{animation:fadeUp .6s ease both .6s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  @media(max-width:640px){
+    nav{padding:.8rem 1.25rem}
+    .nav-links{display:none}
+    .hero{padding:5.5rem 1.25rem 0}
+    section{padding:3.5rem 1.25rem}
+    .about-grid,.project-grid,.skills-grid{grid-template-columns:1fr}
+    .footer-inner{flex-direction:column;gap:6px;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">&#128026; Chloe Vassell</span>
+  <div class="nav-links">
+    <a href="#about">about</a>
+    <a href="#projects">projects</a>
+    <a href="#skills">skills</a>
+    <a href="#contact">contact</a>
+  </div>
+  <span class="nav-badge">open to roles</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-sky"></div>
+  <div class="hero-sun"></div>
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <svg class="birds" width="60" height="18" viewBox="0 0 60 18" fill="none">
+    <path d="M2 10 Q6 5 10 10" stroke="#2a9db5" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M16 6 Q21 1 26 6" stroke="#2a9db5" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M32 12 Q36 8 40 12" stroke="#2a9db5" stroke-width="1.5" fill="none" opacity="0.4"/>
+  </svg>
+  <svg class="hero-scene" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="240" width="1440" height="180" fill="#2a9db5" opacity="0.3"/>
+    <path d="M0 250 Q90 235 180 250 Q270 265 360 250 Q450 235 540 250 Q630 265 720 250 Q810 235 900 250 Q990 265 1080 250 Q1170 235 1260 250 Q1350 265 1440 250 L1440 420 L0 420Z" fill="#2a9db5" opacity="0.5"/>
+    <path d="M0 265 Q90 250 180 265 Q270 280 360 265 Q450 250 540 265 Q630 280 720 265 Q810 250 900 265 Q990 280 1080 265 Q1170 250 1260 265 Q1350 280 1440 265 L1440 420 L0 420Z" fill="#1b7a93" opacity="0.55"/>
+    <path d="M0 280 Q60 272 120 280 Q180 288 240 280 Q300 272 360 280 Q420 288 480 280 Q540 272 600 280 Q660 288 720 280 Q780 272 840 280 Q900 288 960 280 Q1020 272 1080 280 Q1140 288 1200 280 Q1260 272 1320 280 Q1380 288 1440 280" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none"/>
+    <path d="M0 300 Q360 285 720 295 Q1080 305 1440 290 L1440 420 L0 420Z" fill="#ecdcb0"/>
+    <path d="M0 320 Q360 308 720 316 Q1080 324 1440 310 L1440 420 L0 420Z" fill="#f5e9c8"/>
+    <!-- Left palm 1 -->
+    <path d="M80 420 Q88 340 108 240" stroke="#3d6b35" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M108 240 Q60 205 18 200 Q52 215 84 238" fill="#3d6b35" opacity="0.9"/>
+    <path d="M108 240 Q70 210 48 208 Q76 220 100 236" fill="#3d6b35" opacity="0.88"/>
+    <path d="M108 240 Q90 195 96 162 Q104 195 106 228" fill="#3d6b35" opacity="0.85"/>
+    <path d="M108 240 Q118 192 140 165 Q130 196 120 228" fill="#3d6b35" opacity="0.85"/>
+    <path d="M108 240 Q140 210 175 208 Q152 220 128 238" fill="#3d6b35" opacity="0.9"/>
+    <path d="M108 240 Q152 218 194 218 Q168 226 140 238" fill="#3d6b35" opacity="0.82"/>
+    <circle cx="108" cy="252" r="10" fill="#5a3e28"/>
+    <circle cx="120" cy="260" r="8" fill="#5a3e28"/>
+    <circle cx="96" cy="260" r="7" fill="#5a3e28"/>
+    <!-- Left palm 2 -->
+    <path d="M195 420 Q178 360 162 290" stroke="#3d6b35" stroke-width="11" fill="none" stroke-linecap="round"/>
+    <path d="M162 290 Q110 255 72 250 Q105 264 142 284" fill="#3d6b35" opacity="0.88"/>
+    <path d="M162 290 Q148 248 158 220 Q162 252 162 280" fill="#3d6b35" opacity="0.82"/>
+    <path d="M162 290 Q195 260 228 256 Q206 268 182 284" fill="#3d6b35" opacity="0.88"/>
+    <circle cx="162" cy="300" r="8" fill="#5a3e28"/>
+    <!-- Right palm 1 -->
+    <path d="M1360 420 Q1352 340 1332 240" stroke="#3d6b35" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M1332 240 Q1382 205 1424 200 Q1390 215 1360 238" fill="#3d6b35" opacity="0.9"/>
+    <path d="M1332 240 Q1372 210 1396 208 Q1368 220 1346 236" fill="#3d6b35" opacity="0.88"/>
+    <path d="M1332 240 Q1350 195 1346 162 Q1336 195 1334 228" fill="#3d6b35" opacity="0.85"/>
+    <path d="M1332 240 Q1298 210 1262 208 Q1288 220 1312 238" fill="#3d6b35" opacity="0.9"/>
+    <path d="M1332 240 Q1286 218 1244 218 Q1272 226 1302 238" fill="#3d6b35" opacity="0.82"/>
+    <circle cx="1332" cy="252" r="10" fill="#5a3e28"/>
+    <circle cx="1320" cy="260" r="8" fill="#5a3e28"/>
+    <!-- Right palm 2 -->
+    <path d="M1248 420 Q1262 360 1276 295" stroke="#3d6b35" stroke-width="11" fill="none" stroke-linecap="round"/>
+    <path d="M1276 295 Q1328 258 1368 252 Q1336 266 1298 286" fill="#3d6b35" opacity="0.88"/>
+    <path d="M1276 295 Q1268 252 1258 224 Q1264 256 1268 285" fill="#3d6b35" opacity="0.82"/>
+    <path d="M1276 295 Q1246 260 1215 258 Q1240 270 1262 288" fill="#3d6b35" opacity="0.85"/>
+    <circle cx="1276" cy="306" r="8" fill="#5a3e28"/>
+    <!-- Beach details -->
+    <path d="M620 360 L624 345 L628 360 L614 350 L633 350Z" fill="#f4845f" opacity="0.6"/>
+    <circle cx="700" cy="370" r="5" fill="rgba(255,255,255,0.7)" stroke="#ecdcb0" stroke-width="1"/>
+    <ellipse cx="780" cy="355" rx="8" ry="5" fill="rgba(255,255,255,0.6)" stroke="#d8c89a" stroke-width="1"/>
+    <line x1="860" y1="310" x2="860" y2="380" stroke="#f4845f" stroke-width="3" stroke-linecap="round"/>
+    <path d="M820 310 Q860 270 900 310Z" fill="#f9b8c4" opacity="0.85"/>
+    <path d="M820 310 Q860 290 900 310" fill="none" stroke="#f28fa0" stroke-width="1.5"/>
+    <path d="M680 252 Q720 245 760 252 L755 262 Q720 268 685 262Z" fill="rgba(255,255,255,0.6)"/>
+    <line x1="720" y1="252" x2="720" y2="225" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-eyebrow">SECURITY &amp; NETWORKS ENGINEER</div>
+    <h1>Chloe<br/><em>Vassell</em></h1>
+    <div class="hero-tagline">Navigating complex systems, one packet at a time.</div>
+    <p class="hero-bio">CS student passionate about network security, cryptography, and building systems that hold under pressure. Seeking internships and entry-level roles in networking &amp; security.</p>
+    <div class="hero-btns">
+      <a class="btn btn-ocean" href="#projects">View my work</a>
+      <a class="btn btn-outline" href="#contact">Get in touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-bubble"><div class="stat-num">6</div><div class="stat-label">Projects</div></div>
+      <div class="stat-bubble"><div class="stat-num">3</div><div class="stat-label">Languages</div></div>
+      <div class="stat-bubble"><div class="stat-num">&#8734;</div><div class="stat-label">Packets analysed</div></div>
+    </div>
+  </div>
+</div>
+
+<svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" class="wave-sep" style="display:block;background:var(--sand)">
+  <path d="M0 0 Q180 60 360 30 Q540 0 720 30 Q900 60 1080 30 Q1260 0 1440 30 L1440 0Z" fill="#ecdcb0"/>
+</svg>
+
+<section id="about" class="section-sand">
+  <div class="section-label"><span class="icon">&#127754;</span> 01 &mdash; ABOUT</div>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>&#128026; Currently</h3>
+      <p><span class="status-dot"></span>CS student actively seeking networking and security internships or entry-level roles. I enjoy CTF challenges, low-level systems work, and building security tooling from scratch.</p>
+    </div>
+    <div class="about-card">
+      <h3>&#128187; Languages</h3>
+      <div class="lang-stack">
+        <div class="lang-item"><span class="lang-name">C</span><div class="lang-bar-bg"><div class="lang-bar" style="width:88%"></div></div><span class="lang-level">Advanced</span></div>
+        <div class="lang-item"><span class="lang-name">Python</span><div class="lang-bar-bg"><div class="lang-bar" style="width:85%"></div></div><span class="lang-level">Proficient</span></div>
+        <div class="lang-item"><span class="lang-name">Java</span><div class="lang-bar-bg"><div class="lang-bar" style="width:80%"></div></div><span class="lang-level">Proficient</span></div>
+      </div>
+    </div>
+    <div class="about-card">
+      <h3>&#10024; Interests</h3>
+      <p>Network protocol analysis &middot; Penetration testing &middot; Cryptography &middot; Packet inspection &middot; CTF competitions &middot; Linux internals &middot; Secure systems design</p>
+    </div>
+    <div class="about-card">
+      <h3>&#127891; Education</h3>
+      <p>BSc Computer Science<br/><span style="color:var(--text3);font-size:13px;font-family:var(--mono)">Expected graduation 2026 &middot; Open to work</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section-ocean">
+  <div class="section-label"><span class="icon">&#128300;</span> 02 &mdash; PROJECTS</div>
+  <div class="project-grid">
+    <div class="project-card">
+      <div class="project-meta"><span class="project-num">001</span><div class="project-tags"><span class="ptag">C</span><span class="ptag">Networking</span></div></div>
+      <h3>Packet Sniffer</h3>
+      <p>Raw socket-based network analyser in C. Captures and decodes TCP/IP, UDP, and ICMP headers in real time with a colour terminal dashboard.</p>
+      <div class="project-footer"><span class="project-lang">C &middot; libpcap</span><a class="project-link" href="#">github &rarr;</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-meta"><span class="project-num">002</span><div class="project-tags"><span class="ptag">Python</span><span class="ptag">Security</span></div></div>
+      <h3>Port Scanner</h3>
+      <p>Multi-threaded TCP/UDP port scanner with service fingerprinting and OS detection heuristics. Outputs structured JSON for pipeline integration.</p>
+      <div class="project-footer"><span class="project-lang">Python &middot; socket</span><a class="project-link" href="#">github &rarr;</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-meta"><span class="project-num">003</span><div class="project-tags"><span class="ptag">Java</span><span class="ptag">Crypto</span></div></div>
+      <h3>Secure Chat App</h3>
+      <p>End-to-end encrypted messaging using RSA key exchange and AES-256. Built from scratch without third-party crypto libraries.</p>
+      <div class="project-footer"><span class="project-lang">Java &middot; javax.crypto</span><a class="project-link" href="#">github &rarr;</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-meta"><span class="project-num">004</span><div class="project-tags"><span class="ptag">C</span><span class="ptag">Systems</span></div></div>
+      <h3>Firewall Rule Engine</h3>
+      <p>Lightweight user-space firewall using netfilter queue. Evaluates inbound packets against a configurable rule set and logs policy decisions.</p>
+      <div class="project-footer"><span class="project-lang">C &middot; netfilter</span><a class="project-link" href="#">github &rarr;</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-meta"><span class="project-num">005</span><div class="project-tags"><span class="ptag">Python</span><span class="ptag">Forensics</span></div></div>
+      <h3>Log Anomaly Detector</h3>
+      <p>Parses syslog and Apache access logs to flag brute-force attempts, scanning behaviour, and unusual traffic spikes.</p>
+      <div class="project-footer"><span class="project-lang">Python &middot; pandas</span><a class="project-link" href="#">github &rarr;</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-meta"><span class="project-num">006</span><div class="project-tags"><span class="ptag">Java</span><span class="ptag">Networking</span></div></div>
+      <h3>Mini DNS Resolver</h3>
+      <p>Recursive DNS resolver built to RFC spec. Handles A, AAAA, MX, and CNAME records with response caching and TTL management.</p>
+      <div class="project-footer"><span class="project-lang">Java &middot; NIO</span><a class="project-link" href="#">github &rarr;</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section-sand">
+  <div class="section-label"><span class="icon">&#127796;</span> 03 &mdash; SKILLS</div>
+  <div class="skills-grid">
+    <div class="skill-card"><h4>&#128187; Languages</h4><ul><li>C</li><li>Java</li><li>Python</li><li>Bash / Shell</li></ul></div>
+    <div class="skill-card"><h4>&#127760; Networking</h4><ul><li>TCP/IP stack</li><li>Wireshark</li><li>Packet analysis</li><li>DNS / DHCP</li><li>VPNs &amp; routing</li></ul></div>
+    <div class="skill-card"><h4>&#128272; Security</h4><ul><li>Penetration testing</li><li>Nmap / Metasploit</li><li>Cryptography</li><li>CTF challenges</li><li>Vulnerability analysis</li></ul></div>
+    <div class="skill-card"><h4>&#128295; Tools &amp; OS</h4><ul><li>Linux (Kali, Ubuntu)</li><li>Git / GitHub</li><li>GDB debugger</li><li>Burp Suite</li><li>Virtualisation</li></ul></div>
+    <div class="skill-card"><h4>&#128161; Concepts</h4><ul><li>OSI model</li><li>PKI &amp; TLS</li><li>Firewalls &amp; IDS</li><li>Zero-trust</li><li>OWASP Top 10</li></ul></div>
+  </div>
+</section>
+
+<section id="contact" class="section-ocean">
+  <div class="section-label"><span class="icon">&#128140;</span> 04 &mdash; CONTACT</div>
+  <div class="contact-wrap">
+    <h2>Let's <em>connect</em></h2>
+    <p>Looking for networking and security roles &mdash; internships, co-ops, or entry-level. Always happy to chat about security, systems, or CTFs.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:chloe@example.com">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        chloe@example.com
+      </a>
+      <a class="contact-link" href="https://github.com/" target="_blank">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        github.com/chloe-vassell
+      </a>
+      <a class="contact-link" href="https://linkedin.com/" target="_blank">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        linkedin.com/in/chloe-vassell
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="footer-wrap">
+  <svg class="footer-scene" viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+    <path d="M0 40 Q180 10 360 40 Q540 70 720 40 Q900 10 1080 40 Q1260 70 1440 40 L1440 0 L0 0Z" fill="#d0f0f8" opacity="0.4"/>
+    <path d="M55 100 Q58 72 62 48" stroke="#2d5228" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M62 48 Q38 32 16 30 Q36 40 54 50" fill="#2d5228" opacity="0.75"/>
+    <path d="M62 48 Q54 26 58 10 Q61 30 62 46" fill="#2d5228" opacity="0.72"/>
+    <path d="M62 48 Q76 28 96 26 Q82 38 70 48" fill="#2d5228" opacity="0.75"/>
+    <path d="M1385 100 Q1382 72 1378 48" stroke="#2d5228" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M1378 48 Q1402 32 1424 30 Q1404 40 1386 50" fill="#2d5228" opacity="0.75"/>
+    <path d="M1378 48 Q1386 26 1382 10 Q1379 30 1378 46" fill="#2d5228" opacity="0.72"/>
+    <path d="M1378 48 Q1364 28 1344 26 Q1358 38 1370 48" fill="#2d5228" opacity="0.75"/>
+  </svg>
+  <div class="footer-inner">
+    <p>&#169; 2025 Chloe Vassell</p>
+    <span class="footer-tag">built with sunshine &#9728;</span>
+  </div>
+</div>
+
+</body>
+</html>
